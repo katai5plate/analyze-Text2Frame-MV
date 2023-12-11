@@ -56,7 +56,14 @@ const text = `長老に会って挨拶は済ませてきたかい？
 
 // list 形式で出力される
 const list = TF.parse(text);
-console.log(list);
+
+// 挿入場所によって indent を変更したり、条件によって内容を変えたりできる
+const result = list.map(({ indent, ...rest }) => ({
+  ...rest,
+  indent: indent + 2,
+}));
+
+console.log(result);
 // [
 //   { code: 101, parameters: [ '', 0, 0, 2, '' ], indent: 2 },
 //   { code: 401, parameters: [ '長老に会って挨拶は済ませてきたかい？' ], indent: 2 },
@@ -68,13 +75,6 @@ console.log(list);
 //   { code: 0, parameters: [], indent: 2 }
 // ]
 
-// 挿入場所によって indent を変更したり、条件によって内容を変えたりできる
-const result = list.map(({ indent, ...rest }) => ({
-  ...rest,
-  indent: indent + 2,
-}));
-
-// 例えばこういう、特定のコモンイベントの指定されたラベル部分に結果を挿入したり
-// そういう自由度の高い処理が書けるようにしたい
-injectToCommonEvent({ id: 3, labelName: "挿入：たのみごと" }, result);
+// 例えばこういう、特定のコモンイベントの指定されたラベル部分に挿入する処理とかに使えるようにしたい
+myLib.injectToCommonEvent({ id: 3, labelName: "挿入：たのみごと" }, result);
 ```

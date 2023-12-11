@@ -1,0 +1,20 @@
+{
+  "name": "analyze-text2frame-mv",
+  "version": "1.0.0",
+  "description": "Text2Frame-MV を分解して解析するためのリポジトリ",
+  "main": "Text2Frame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katai5plate/analyze-Text2Frame-MV.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katai5plate/analyze-Text2Frame-MV/issues"
+  },
+  "homepage": "https://github.com/katai5plate/analyze-Text2Frame-MV#readme"
+}

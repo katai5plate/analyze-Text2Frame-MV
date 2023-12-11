@@ -34,7 +34,7 @@ t2fSource = t2fSource.replace(
 // developer mode から先を削除
 t2fSource = t2fSource.replace(/\/\/ developer mode[\s\S]*/, "");
 
-// Text2Frame を実行し、pluginCommandText2Frame を定義
+// Text2Frame を実行し、Text2Frame を定義
 eval(t2fSource);
 
 // パラメータ定義

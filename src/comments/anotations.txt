@@ -1,0 +1,171 @@
+/* eslint-disable spaced-comment */
+/*:
+ * @target MZ
+ * @plugindesc テキストファイル(.txtファイルなど)から「文章の表示」イベントコマンドに簡単に変換するための、開発支援プラグインです。ツクールMV・MZの両方に対応しています。
+ * @author Yuki Katsura, えーしゅん
+ * @url https://raw.githubusercontent.com/yktsr/Text2Frame-MV/master/Text2Frame.js
+ *
+ * @command IMPORT_MESSAGE_TO_EVENT
+ * @text イベントにインポート
+ * @desc イベントにメッセージをインポートします。取り込み元ファイルの情報や、取り込み先のマップ・イベント・ページID等を指定します。
+ *
+ * @arg FileFolder
+ * @text 取り込み元フォルダ名
+ * @desc テキストファイルを保存しておくフォルダ名を設定します。デフォルトはtextです。
+ * @type string
+ * @default text
+ *
+ * @arg FileName
+ * @text 取り込み元ファイル名
+ * @desc 読み込むシナリオファイルのファイル名を設定します。デフォルトはmessage.txtです。
+ * @type string
+ * @default message.txt
+ *
+ * @arg MapID
+ * @text 取り込み先マップID
+ * @desc 取り込み先となるマップのIDを設定します。デフォルト値は1です。
+ * @type number
+ * @default 1
+ *
+ * @arg EventID
+ * @text 取り込み先イベントID
+ * @desc 取り込み先となるイベントのIDを設定します。デフォルト値は2です。
+ * @type number
+ * @default 2
+ *
+ * @arg PageID
+ * @text 取り込み先ページID
+ * @desc 取り込み先となるページのIDを設定します。デフォルト値は1です。
+ * @type number
+ * @default 1
+ *
+ * @arg IsOverwrite
+ * @text 【取り扱い注意】上書きする
+ * @desc 通常イベントの末尾に追加しますが、上書きに変更できます。trueのとき上書きです。デフォルト値はfalseです。
+ * @type select
+ * @option true(!!!上書きする!!!)
+ * @value true
+ * @option false(上書きしない)
+ * @value false
+ * @default false
+ *
+ * @command IMPORT_MESSAGE_TO_CE
+ * @text コモンイベントにインポート
+ * @desc コモンイベントにメッセージをインポートします。取り込み元ファイルの情報や、取り込み先のコモンイベントID等を指定します。
+ *
+ * @arg FileFolder
+ * @text 取り込み元フォルダ名
+ * @desc テキストファイルを保存しておくフォルダ名を設定します。デフォルトはtextです。
+ * @type string
+ * @default text
+ *
+ * @arg FileName
+ * @text 取り込み元ファイル名
+ * @desc 読み込むシナリオファイルのファイル名を設定します。デフォルトはmessage.txtです。
+ * @type string
+ * @default message.txt
+ *
+ * @arg CommonEventID
+ * @text 取り込み先コモンイベントID
+ * @desc 出力先のコモンイベントIDを設定します。デフォルト値は1です。
+ * @type common_event
+ * @default 1
+ *
+ * @arg IsOverwrite
+ * @text 【取り扱い注意】上書きする
+ * @desc 通常イベントの末尾に追加しますが、上書きに変更できます。trueのとき上書きです。デフォルト値はfalseです。
+ * @type select
+ * @option true(!!!上書きする!!!)
+ * @value true
+ * @option false(上書きしない)
+ * @value false
+ * @default false
+ *
+ * @param Default Window Position
+ * @text 位置のデフォルト値
+ * @desc テキストフレームの表示位置デフォルト値を設定します。デフォルトは下です。個別に指定した場合は上書きされます。
+ * @type select
+ * @option 上
+ * @option 中
+ * @option 下
+ * @default 下
+ *
+ * @param Default Background
+ * @text 背景のデフォルト値
+ * @desc テキストフレームの背景デフォルト値を設定します。デフォルトはウインドウです。個別に指定した場合は上書きされます。
+ * @type select
+ * @option ウインドウ
+ * @option 暗くする
+ * @option 透明
+ * @default ウインドウ
+ *
+ * @param Default Scenario Folder
+ * @text 取り込み元フォルダ名
+ * @desc テキストファイルを保存しておくフォルダ名を設定します。デフォルトはtextです。(MZでは無視されます)
+ * @default text
+ * @require 1
+ * @dir text
+ * @type string
+ *
+ * @param Default Scenario File
+ * @text 取り込み元ファイル名
+ * @desc 読み込むシナリオファイルのファイル名を設定します。デフォルトはmessage.txtです。(MZでは無視されます)
+ * @default message.txt
+ * @require 1
+ * @dir text
+ * @type string
+ *
+ * @param Default Common Event ID
+ * @text 取り込み先コモンイベントID
+ * @desc 出力先のコモンイベントIDを設定します。デフォルト値は1です。(MZでは無視されます)
+ * @default 1
+ * @type common_event
+ *
+ * @param Default MapID
+ * @text 取り込み先マップID
+ * @desc 取り込み先となるマップのIDを設定します。デフォルト値は1です。(MZでは無視されます)
+ * @default 1
+ * @type number
+ *
+ * @param Default EventID
+ * @text 取り込み先イベントID
+ * @desc 取り込み先となるイベントのIDを設定します。デフォルト値は2です。(MZでは無視されます)
+ * @default 2
+ * @type number
+ *
+ * @param Default PageID
+ * @text 取り込み先ページID
+ * @desc 取り込み先となるページのIDを設定します。デフォルト値は1です。(MZでは無視されます)
+ * @default 1
+ * @type number
+ *
+ * @param IsOverwrite
+ * @text 【取り扱い注意】上書きする
+ * @desc 通常イベントの末尾に追加しますが、上書きに変更できます。trueのとき上書きです。デフォルト値はfalseです。
+ * @default false
+ * @type boolean
+ *
+ * @param Comment Out Char
+ * @text コメントアウト記号
+ * @desc 行頭に置いた場合、その行をコメントとして処理する記号を定義します。デフォルト値は「％」（半角パーセント）です。
+ * @default %
+ * @type string
+ *
+ * @param IsDebug
+ * @text デバッグモードを利用する
+ * @desc F8のコンソールログにこのプラグインの詳細ログが出力されます。デフォルト値はfalseです。処理時間が伸びます。
+ * @default false
+ * @type boolean
+ *
+ * @param DisplayMsg
+ * @text メッセージ表示
+ * @desc 実行時に通常メッセージを表示します。OFFで警告以外のメッセージが表示されなくなります。デフォルト値はtrueです。
+ * @default true
+ * @type boolean
+ *
+ * @param DisplayWarning
+ * @text 警告文表示
+ * @desc 実行時に警告を表示します。OFFで警告が表示されなくなります。デフォルト値はtrueです。
+ * @default true
+ * @type boolean
+ *

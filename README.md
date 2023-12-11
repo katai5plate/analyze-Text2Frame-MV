@@ -14,13 +14,20 @@ node compile -t ./specs/basic.txt -o ./result.json
 
 ## 本当はやりたかったこと
 
-JS コード内部からテキストを JSON 化する
+JS コード内部からテキストを JSON 化したい
+
+- 使い道
+  - バージョンなどをファイル化しておき、テキストに埋め込むことで、いつ出力されたか記録する
+  - テキストの動的生成を行う
+  - 埋め込み方法の拡張や変更するプラグインを書く
+  - イベントコマンドを作成する外部ツール開発で、中間コードとしてテキストを使用する
 
 ```js
 const { parse } = require("Text2Frame.js");
 
 // JS から動的に生成されたテキスト
 const place = ["城", "宿屋", "洞窟の前"][Math.floor(Math.random() * 3)];
+const date = new Date().toLocaleString();
 const text = `長老に会って挨拶は済ませてきたかい？
 <ShowChoices>
 <When: はい>
@@ -30,7 +37,10 @@ const text = `長老に会って挨拶は済ませてきたかい？
 それはいけない。
 長老は君のような若者を探しているんだ。
 挨拶に行って話を聞いてくれないかい。
-<End>`;
+<End>
+<comment>
+出力日時: ${date}
+</comment>`;
 
 // list 形式で出力される
 const list = parse(text);

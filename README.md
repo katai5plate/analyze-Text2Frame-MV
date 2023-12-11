@@ -67,7 +67,7 @@ console.log(result);
 // [
 //   { code: 101, parameters: [ '', 0, 0, 2, '' ], indent: 2 },
 //   { code: 401, parameters: [ '長老に会って挨拶は済ませてきたかい？' ], indent: 2 },
-//   { code: 102, parameters: [ [Array], 1, 0, 2, 0 ], indent: 2 },
+//   { code: 102, parameters: [ [...], 1, 0, 2, 0 ], indent: 2 },
 //   { code: 402, parameters: [ 0, 'はい' ], indent: 2 },
 // ...
 //   { code: 404, parameters: [], indent: 2 },

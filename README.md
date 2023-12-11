@@ -33,7 +33,7 @@ JSON 変換部と埋め込み処理部を切り離し、JSON 変換部をモジ�
   - イベントコマンドを作成する外部ツール開発で、中間コードとしてテキストを使用する
 
 ```js
-const { parse } = require("Text2Frame.js");
+const TF = require("Text2Frame.js");
 
 // JS から動的に生成されたテキスト
 const place = ["城", "宿屋", "洞窟の前"][Math.floor(Math.random() * 3)];
@@ -53,19 +53,18 @@ const text = `長老に会って挨拶は済ませてきたかい？
 </comment>`;
 
 // list 形式で出力される
-const list = parse(text);
+const list = TF.parse(text);
 console.log(list);
 // [
-//   { code: 101, indent: 0,
-//     parameters: ["", 0, 0, 2, ""] },
-//   { code: 401, indent: 0,
-//     parameters: ["長老に会って挨拶は済ませてきたかい？"] },
-//   { code: 102, indent: 0,
-//     parameters: [["はい", "いいえ"], 1, 0, 2, 0] },
-//   { code: 402, indent: 0,
-//     parameters: [0, "はい"] },
-//   ...
-// ];
+//   { code: 101, parameters: [ '', 0, 0, 2, '' ], indent: 2 },
+//   { code: 401, parameters: [ '長老に会って挨拶は済ませてきたかい？' ], indent: 2 },
+//   { code: 102, parameters: [ [Array], 1, 0, 2, 0 ], indent: 2 },
+//   { code: 402, parameters: [ 0, 'はい' ], indent: 2 },
+// ...
+//   { code: 404, parameters: [], indent: 2 },
+//   { code: 108, parameters: [ '出力日時: 2023/12/12 5:48:20' ], indent: 2 },
+//   { code: 0, parameters: [], indent: 2 }
+// ]
 
 // 挿入場所によって indent を変更したり、条件によって内容を変えたりできる
 const result = list.map(({ indent, ...rest }) => ({

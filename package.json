@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/katai5plate/analyze-Text2Frame-MV/issues"
   },
-  "homepage": "https://github.com/katai5plate/analyze-Text2Frame-MV#readme"
+  "homepage": "https://github.com/katai5plate/analyze-Text2Frame-MV#readme",
+  "dependencies": {
+    "@types/node": "^20.10.4",
+    "commander": "^11.1.0"
+  }
 }

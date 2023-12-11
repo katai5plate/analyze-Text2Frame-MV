@@ -75,5 +75,5 @@ const result = list.map(({ indent, ...rest }) => ({
 
 // 例えばこういう、特定のコモンイベントの指定されたラベル部分に結果を挿入したり
 // そういう自由度の高い処理が書けるようにしたい
-injectCommonEvent({ id: 3, labelName: "長老の会話変化" }, result);
+injectToCommonEvent({ id: 3, labelName: "挿入：たのみごと" }, result);
 ```

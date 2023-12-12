@@ -6,7 +6,7 @@ Text2Frame-MV を分解して解析するためのリポジトリ
 
 ### compile.js
 
-テキストを単純な JSON に変換する
+テキストを単純な JSON に変換する（読み込む度にコードを改造するため高負荷）
 
 ```
 node compile -t ./specs/basic.txt -o ./result.json

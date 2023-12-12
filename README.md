@@ -14,7 +14,7 @@ node compile -t ./specs/basic.txt -o ./result.json
 
 ### parse.js
 
-要望メモに書いてあることを疑似的に再現（読み込む度にコードを改造するため高負荷）
+要望に書いてあることを疑似的に再現（読み込む度にコードを改造するため高負荷）
 
 ### これではダメなの？
 
@@ -23,7 +23,11 @@ node compile -t ./specs/basic.txt -o ./result.json
 コードがまた大きく書き換わると動かなくなるので、アプデに脆弱すぎる。  
 公式が対応してほしい。
 
-## 要望メモ
+## 要望
+
+https://github.com/yktsr/Text2Frame-MV/issues/117 に提出済
+
+### 下書き
 
 JSON 変換部と埋め込み処理部を切り離し、JSON 変換部をモジュールとして使えるようにしてほしい
 
